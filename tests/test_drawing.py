@@ -24,6 +24,14 @@ class TestDrawingFullProfile(unittest.TestCase):
                                  'xmlns:ev="http://www.w3.org/2001/xml-events" '
                                  'xmlns:xlink="http://www.w3.org/1999/xlink"><defs /></svg>')
 
+    def test_height_and_width(self):
+        dwg = Drawing(height=3300, width=2550)
+        result = dwg.tostring()
+        self.assertEqual(result, '<svg baseProfile="full" height="3300" version="1.1" '
+                                 'width="2550" xmlns="http://www.w3.org/2000/svg" '
+                                 'xmlns:ev="http://www.w3.org/2001/xml-events" '
+                                 'xmlns:xlink="http://www.w3.org/1999/xlink"><defs /></svg>')
+
     def test_stylesheet(self):
         dwg = Drawing()
         dwg.add_stylesheet('test.css', 'Test')
@@ -76,6 +84,14 @@ class TestDrawingTinyProfile(unittest.TestCase):
         result = dwg.tostring()
         self.assertEqual(result, '<svg baseProfile="tiny" height="100%" version="1.2" '
                                  'width="100%" xmlns="http://www.w3.org/2000/svg" '
+                                 'xmlns:ev="http://www.w3.org/2001/xml-events" '
+                                 'xmlns:xlink="http://www.w3.org/1999/xlink"><defs /></svg>')
+
+    def test_height_and_width(self):
+        dwg = Drawing(profile="tiny", height=3300, width=2550)
+        result = dwg.tostring()
+        self.assertEqual(result, '<svg baseProfile="tiny" height="3300" version="1.2" '
+                                 'width="2550" xmlns="http://www.w3.org/2000/svg" '
                                  'xmlns:ev="http://www.w3.org/2001/xml-events" '
                                  'xmlns:xlink="http://www.w3.org/1999/xlink"><defs /></svg>')
 
